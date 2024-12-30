@@ -14,5 +14,9 @@
   "dependencies": {
     "express": "^4.21.0",
     "mongoose": "^8.6.3"
+  },
+  "devDependencies": {
+    "eslint": "^9.17.0",
+    "globals": "^15.14.0"
   }
 }
