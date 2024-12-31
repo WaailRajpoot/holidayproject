@@ -1,0 +1,9 @@
+appName: my-app
+serviceName: my-app-service
+configName: my-app-config
+replicas: 2
+image:
+  repository: waailrajpoot/demo-app2
+  tag: latest
+  pullPolicy: Always
+
