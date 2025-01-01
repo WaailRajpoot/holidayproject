@@ -6,11 +6,11 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'git@github.com:WaailRajpoot/holidayproject.git' # Replace with your GitHub repository URL
+    repoURL: git@github.com:WaailRajpoot/holidayproject.git # Replace with your GitHub repository URL
     targetRevision: main # Branch to track
-    path: '.' # Path to the application manifests in your repo
+    path: . # Path to the application manifests in your repo
   destination:
-    server: 'https://kubernetes.default.svc' # Points to the in-cluster Kubernetes API
+    server:  https://kubernetes.default.svc # Points to the in-cluster Kubernetes API
     namespace: project # Namespace to deploy your app
   syncPolicy:
     automated:
