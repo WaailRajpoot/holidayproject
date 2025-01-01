@@ -14,9 +14,35 @@ spec:
       labels:
         app: {{ .Chart.Name }}
     spec:
+      imagePullSecrets:
+        - name: dockerhub-cred
+      initContainers:
+        - name: seed-data
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+            - "npm"
+            - "run"
+            - "seed"
+          env:
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.mongoUri.secretName }}
+                  key: {{ .Values.mongoUri.secretKey }}
       containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        - name: crud-app
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 80
+            - containerPort: 3000
+          env:
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.mongoUri.secretName }}
+                  key: {{ .Values.mongoUri.secretKey }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      securityContext:
+        {{- toYaml .Values.securityContext | nindent 8 }}

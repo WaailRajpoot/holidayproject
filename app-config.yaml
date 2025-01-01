@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/WaailRajpoot/holidayproject.git' # Replace with your GitHub repository URL
+    repoURL: 'git@github.com:WaailRajpoot/holidayproject.git' # Replace with your GitHub repository URL
     targetRevision: main # Branch to track
     path: '.' # Path to the application manifests in your repo
   destination:
